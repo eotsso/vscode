@@ -1,0 +1,44 @@
+/*
+
+ Write a program that reads 15 floating-point numbers into an array and uses a 
+ function Maximum that accepts the array along with its size as parameters and returns the 
+ largest element of the array. The program needs to output the result (the largest array element).
+
+*/
+
+#include <iostream>
+
+using namespace std;
+
+float Maximum(float[], int); //f-n prototype
+
+int main()
+{
+    const int size = 15; 
+    float a[size]; 
+    float max;
+
+    for (int i = 0; i < size; i++)
+    {
+        cout << "Enter a floating-point number: ";
+        cin >> a[i]; 
+    }
+
+    max = Maximum(a, size);
+
+    cout << "The largest floating-point number in the array element is " << max << "." << endl;
+
+    return 0;
+}
+
+float Maximum(float b[], int s)
+{
+    float maxNum;
+    maxNum = b[0];
+
+    for (int i = 0; i < s; i++)
+      if (b[i] > maxNum)
+        maxNum = b[i];
+
+    return maxNum; 
+}

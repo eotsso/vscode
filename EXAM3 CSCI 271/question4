@@ -1,0 +1,38 @@
+/*
+4. Write a function Count that accepts a character array x and its size arraySize 
+and returns the number of characters ‘g’ in the array. 
+*/
+
+#include <iostream>
+using namespace std;
+
+int Count (char[], int);
+
+int main()
+{
+    const int size = 3;
+    char word[4] = "ggp"; //char array size is 4 because must account for \0 in char array
+    int result;
+
+    result = Count(word, 3); 
+
+    cout << result << endl;
+
+}
+
+//FUNCTION ITSELF IS HE ANSWER
+
+int Count (char x[], int arraySize)
+{
+    int counterG; 
+
+    counterG = 0;
+
+    for (int i = 0; i < arraySize; i++)
+    {
+        if (x[i] == 'g')
+            counterG++;
+    }
+
+    return counterG;
+}

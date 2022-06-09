@@ -1,0 +1,37 @@
+#include <iostream>
+#include <string>
+#include <cctype>
+using namespace std;
+
+int main() {
+
+   /* Type your code here. */
+   string userInput;
+   int i, j, counter, strSize; 
+   
+   getline (cin, userInput) ;
+     
+     for (int x = 0; x < userInput.size(); i++)
+   {
+      if (isspace(userInput.at(x)) != 0)
+         userInput.at(x) = '\0';
+   }
+   i = 0;
+   j = userInput.size() - 1;
+   counter = 0;
+   while (userInput.at(i) == userInput.at(j) && (j > 0)) //j > 0 is required: once it's done iterating and i = 3 and j = -1: OFR
+   {
+      i++;
+      j--;
+      counter++; 
+   }
+   
+   if (userInput.size() - 1 == counter)
+      cout << "paliindrome: " << userInput << endl;
+   else 
+      cout << "not a palindrome: " << userInput << endl;
+   
+   
+   
+   return 0;
+}

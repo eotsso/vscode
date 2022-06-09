@@ -1,0 +1,57 @@
+
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+void modifyArray (int [], int); //prototype
+void modifyElement (int); //prototype
+
+int main() {
+    const int size = 10; //1. size will always be 10 and unchanging 
+    int a[size]; //2. array declaration of array[10];
+  
+    for (int i = 0; i < size; i++) //3. for i = 0; i < 10; i++
+        a[i] = i * i; //4. each value is squared. so in a[0] = 0, a[1] = 1; a[2] = 4, . . . a[9] = 81
+    
+    modifyArray (a, size); //5. passing array a with size (10); 
+    cout << "a[4] = " << a[4] << endl; //9. refer to line 27; a[4] = 16 * 3 = 48
+   
+    modifyElement (a[4]); //10. passes a[4] which is value 48 into modify element //go line 29; 
+    cout << "a[4] = " << a[4] << endl; //13. a[4] = 48, so it'll still print 48 since not passed by reference. 
+
+return 0; }
+void modifyArray(int b[], int s) //6. arrays are default pass by reference. 
+{
+    for (int k = 0; k < s; k++) //7. iterate through the entire array 0-9, 
+        b[k] *= 3; //8. every value squared is now multipled by 3 in array a; 
+}
+void modifyElement(int d) //11. int 48 is passed into here, but it's pass by value....
+{
+d -= 2; //12. 48 - 2 = 46 = d, but... it can't modify the original array...? //go back line 21
+}
+
+//----------------------********************************************//
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int a = 12; //1. declared and intialized a = 12; 
+    int * b = & a; //2. declared and initalized POINTER b to memory address a. 
+    
+    cout << a << endl; //OUTPUT: 12 << endl;
+    
+    * b = -4; //dereferences b and assigns a = -4
+   
+    cout << “a: “ << a << "\t"; //OUTPUT: a: -4 << "\t"
+    
+    cout << “*b: “ << * b << "\n"; //OUTPUT: *b: -4 << "\n"
+    
+    a = 7; // a is now 7. 
+    
+    cout << “a: “ << a << "\t"; cout << “*b: “ << * b << “\n"; //OUTPUT: a: 7   *b: 7 << endl
+
+return 0; 
+
+}

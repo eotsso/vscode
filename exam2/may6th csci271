@@ -1,0 +1,178 @@
+#include <iostream>
+using namespace std;
+
+arrays: a data structure where each element is stored in memory consecutively.
+
+main ()
+{
+    int a [5]; //array declaration 
+        //a is array name
+        //[5] is array size
+        //Arrays start at index 0. [0][1][2][3][4], each index/subscript is the position
+}
+
+int a [5]; //takes 10 bytes of memory since int is 2 bytes per
+float b [50]; //takes 200 bytes of memory since float is 4 bytes per
+double c [100]; //takes...
+char d [20]; //character of arrays is essentially just a string
+char e [5] = {'H', 'e', 'L', 'l', 'o'};
+bool f [25];
+
+1. Declaration of Array
+
+int a [5];
+
+2. Delcare and Initlize
+
+int a [5] = {0, 1, 2, 3, 4}; //don't forget semi-colon
+int a [] = {0, 1, 2, 3, 4}; //declares and initlizaes array a with 5 elements. The brackets []. Can't skip the size if you only declare
+//only works in declaration and initalization; 
+int b[10] = {4}; //every single array index will be assigned 4, so it's actually {4,4,4,4,4,4,4,4,4,4}.
+float b [4] {0.0, 0.1, -0.2, 0.33};
+
+
+3. Assign (assumes declaration)
+
+a [0] = 1;
+a [1] = 2; 
+a [2] = 3;
+a [3] = 4;
+a [4] = 5;
+//very tedious, use for-loop instead.
+
+for (int i = 0; i < 5; i++)
+{
+    a[i] = i; //this for-loop initlizates each array element with its index. 
+
+}
+
+4. Read (reading elements into an array)
+use a for-loop
+
+for (int = 0; i <= 4; i++)
+{
+    cout << "Enter an integer: ";
+    cin >> a[i]; 
+}
+
+5. Print (print array element with a space between each)
+use a for-loop
+
+for (int i = 0; i <= 4; i++)
+{
+    cout << a[i] << " ";
+}
+----
+Why doesnt the following work?
+
+int a [] = {1};
+cout << a; 
+//a doesn't return 1; why? 
+
+Its because each arrays in C++ are done via pointers.
+so cout << a will return the memory location value of a itself, but arrays are actually pointers to another memory location.
+in reality arrays look like this
+&a[0] -------> a[0]
+-----
+OTHE WAYS TO DECLARE ARRAYS
+int size = 20
+int a [size]; //useful if you want to use a variable to declare a size in an array. 
+/*Array Program Example: This program will initalize an array of size 10 with integer otained from the user.
+The program then eneed to calculate the average of the array elements*/
+
+main()
+{
+    int a[10], sum, i; 
+    float avg;
+
+    sum = 0;
+    for (i = 0; i <= 9; i++)
+    {
+        cout << "Enter an integer: " << endl;
+        cin >> a[i]; 
+        sum += a[i];
+    }
+
+    avg = sum / 10; 
+
+        cout << "The average of the array elements is " << avg << endl; 
+
+        getch();
+        return 0;
+}
+
+/*Program Example 2 Arrays:
+This program will initalize an integer array of size 20 with numbers obtained from the user. 
+and will determine whether each array element is even or odd. */
+
+int main()
+{
+    const int size = 20;
+    int x [size];
+
+    for (int i = 0; i < size; i++)
+    {
+        cout << "Enter an integer: " << endl;
+        cin >> x[i];
+
+    }
+
+    for (int i = 0; i < size; i++)
+    {
+        if (x[i] % 0 == 0)
+            cout << x[i] << " is even." << endl;
+        else 
+            cout << x[i] << " is odd." << endl;
+    }
+    getch();
+    return 0;
+}
+
+----
+Passing Arrays to Functions
+
+By name = by reference
+
+By default, in C++, arrays are all passed by reference. 
+
+When passinf arrays to functions, the function has direc access to the original array for main. 
+
+This is because say we pass an array of size 1 million. If the default was to 
+pass by value, that means that there would be 1 million local copies...not great for space. 
+
+#....
+using namespace std;
+
+float average (int[], 10) //you must write BOTH the array type and the size of array because there's no auto-discovery.
+
+main()
+{
+    int a[10] = {0, 4, 6, 8, 10, 12, 14, 16, 18, 20};
+
+    avg = average(a, 10); //array name followed by array size in a function call.
+
+    cout << "The average of the array element is "  << avg << endl; 
+
+}
+
+float average(int x[], int size) //parameters are array, array size
+{
+    int sum = 0;
+    float average;
+
+    for (int i = 0; i < size; i++)
+    {
+        sum = sum + x[i];
+    }
+
+    average = (float)sum / size; //don't forget about integer division.
+
+    return average; //important step. it'll return to above to main in a float data type
+                    //which is then stored into avg 
+}
+
+
+----
+Exam 1 Review
+
+
