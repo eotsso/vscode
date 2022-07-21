@@ -1,19 +1,81 @@
-# include <iostream>
+#include <iostream>
+#include <cstdlib> //required for rand() function.
+#include <ctime> //required for time(NULL); function. 
+
 using namespace std;
 
-int main()
+void moveTortoise(int *);
+void moveHare (int *);
+
+int main ()
 {
-	int age = 50; 
-	int *agePtr; //declare a pointer "agePtr"
 
-	agePtr = &age; //assigns variable "age" memory address to pointer variable "agePtr"
+srand(time(NULL)); //grabs the computer time which is a "random" seed. 
 
-	cout << "age:\t" << age; 
-	cout << endl;
-	cout << "agePtr:\t" << agePtr << endl; //will print memory address of "age"
-										//this is because agePtr hasn't been dereferenced.
+int num, counter; 
+int tortPos = 1; 
+int harePos = 1; 
 
-    cout << "memory address of age" << &age << endl; 
+counter = 0; 
+while (tortPos < 70 && harePos < 70) 
+{
+    moveTortoise(&tortPos); 
+    moveHare(&harePos);
 
-	return 0;
+    if (tortPos < 0) 
+        tortPos = 1; 
+    if (harePos < 0)
+        harePos = 1; 
+    
+    counter++;
+}
+
+const int size = 70;
+char progress [size] = {0}; //creates array with size 70 and a line
+
+for (unsigned i = 0; i < size; i++)
+{
+    cout << progress[i];
+}
+
+/*
+if (tortPos < harePos)
+    cout << " hare wins!" << harePos << "\t" << tortPos;
+else 
+    cout << " tort wins!" << tortPos << "\t" << harePos;
+*/
+
+return 0;
+
+}
+
+void moveTortoise(int *tortPtr)
+{
+    int num; 
+    num = rand() % 10 + 1; 
+
+    if (num > 0 && num < 6)         //1 - 5, 50%; Fast plod
+        *tortPtr = *tortPtr + 3; 
+    else if (num < 8)               //6 - 7, 20%; Slip
+        *tortPtr = *tortPtr - 6; 
+    else
+        *tortPtr = *tortPtr + 1;              //8 - 10, 30%; Slow plod
+
+}
+
+void moveHare(int *harePtr)
+{
+    int num; 
+    num = rand() % 10 + 1; 
+
+    if (num > 0 && num < 3)         //1-2, 20%, Sleep     
+        *harePtr = *harePtr;
+    else if (num < 5)               //3-4, 20%, Big hop         
+        *harePtr = *harePtr + 9; 
+    else if (num < 6)               //5, 10%, Big slip
+        *harePtr = *harePtr - 12;
+    else if (num < 9)               //6 - 8, 30%, Small hop   
+        *harePtr = *harePtr + 1; 
+    else                            //9-10, 20%, Small slip 
+        *harePtr = *harePtr - 2;
 }

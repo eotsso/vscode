@@ -30,15 +30,11 @@ while (tortPos < 70 && harePos < 70)
     counter++;
 }
 
-const int size = 70;
-char progress [size] = '-'; //creates array with size 
-
-/*
 if (tortPos < harePos)
     cout << " hare wins!" << harePos << "\t" << tortPos;
 else 
     cout << " tort wins!" << tortPos << "\t" << harePos;
-*/
+
 
 return 0;
 
