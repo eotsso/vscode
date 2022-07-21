@@ -6,18 +6,17 @@ using namespace std;
 
 void moveTortoise(int *);
 void moveHare (int *);
-void createArray();
+void createArray(int *, int *);
 
 int main ()
 {
 
 srand(time(NULL)); //grabs the computer time which is a "random" seed. 
 
-int num, counter;
+int num;
 int tortPos = 1; 
 int harePos = 1; 
 
-counter = 0;
 while (tortPos < 70 && harePos < 70) 
 {
     moveTortoise(&tortPos); 
@@ -28,14 +27,10 @@ while (tortPos < 70 && harePos < 70)
     if (harePos < 0)
         harePos = 1; 
     
-    counter++;
+    createArray(&tortPos, &harePos); 
+
 }
 
-for (int i = 0; i < counter; i++)
-{
-    createArray(); 
-    
-}
 
 
 /*
@@ -59,7 +54,7 @@ void moveTortoise(int *tortPtr)
     else if (num < 8)               //6 - 7, 20%; Slip
         *tortPtr = *tortPtr - 6; 
     else
-        *tortPtr = *tortPtr + 1;              //8 - 10, 30%; Slow plod
+        *tortPtr = *tortPtr + 1;    //8 - 10, 30%; Slow plod
 
 }
 
@@ -88,12 +83,26 @@ void createArray(int *tortPtr, int *harePtr) //re-creates the 70 line
     for (int i = 0; i < size; i++)
         progress[i] = '-';
 
-    progress[*harePtr] = 'H';
-    progress[*tortPtr] = 'T';    
+    if (*harePtr == *tortPtr)
+    {
+        progress[*tortPtr] = 'O';
+        progress[*tortPtr + 1] = 'U';
+        progress[*tortPtr + 2] = 'C';
+        progress[*tortPtr + 3] = 'H';
+        
+    }
+    else 
+    {
+        progress[*harePtr] = 'H';
+        progress[*tortPtr] = 'T';
+    }
+    
 
-    for (int i = 0; i < counter; i++)
+    for (int i = 0; i < size; i++)
     {
         cout << progress[i];
     }
+    
+    cout << endl;
 
 }
