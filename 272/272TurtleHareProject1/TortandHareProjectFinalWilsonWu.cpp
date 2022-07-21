@@ -17,28 +17,21 @@ int num;
 int tortPos = 1; 
 int harePos = 1; 
 
-while (tortPos < 70 && harePos < 70) 
+cout << "BANG!!!!!\nAND THEY ARE OFF!!!!!" << endl;
+
+while (tortPos < 69 && harePos < 69) 
 {
     moveTortoise(&tortPos); 
     moveHare(&harePos);
 
     if (tortPos < 0) 
         tortPos = 1; 
+        
     if (harePos < 0)
         harePos = 1; 
     
     createArray(&tortPos, &harePos); 
-
 }
-
-
-
-/*
-if (tortPos < harePos)
-    cout << "hare wins! " << harePos << "\t" << tortPos;
-else 
-    cout << "tort wins! " << tortPos << "\t" << harePos;
-*/
 
 return 0;
 
@@ -78,12 +71,17 @@ void moveHare(int *harePtr)
 void createArray(int *tortPtr, int *harePtr) //re-creates the 70 line 
 {
     const int size = 70;
-    char progress[size]; 
+    char progress[size]; //0 - 69
 
     for (int i = 0; i < size; i++)
         progress[i] = '-';
 
-    if (*harePtr == *tortPtr)
+    if (*tortPtr > 69)
+        *tortPtr = 69;
+    if (*harePtr > 69)
+        *harePtr = 69;
+
+    if (*harePtr == *tortPtr && *harePtr != 69) 
     {
         progress[*tortPtr] = 'O';
         progress[*tortPtr + 1] = 'U';
@@ -91,7 +89,9 @@ void createArray(int *tortPtr, int *harePtr) //re-creates the 70 line
         progress[*tortPtr + 3] = 'H';
         
     }
-    else 
+    else if (*harePtr == 69 && *tortPtr == 69) // if hare and tort tie, print blank. 
+        progress[69] = '-';
+    else
     {
         progress[*harePtr] = 'H';
         progress[*tortPtr] = 'T';
@@ -104,5 +104,6 @@ void createArray(int *tortPtr, int *harePtr) //re-creates the 70 line
     }
     
     cout << endl;
-
 }
+
+
