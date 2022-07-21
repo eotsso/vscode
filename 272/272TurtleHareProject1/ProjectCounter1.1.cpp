@@ -12,10 +12,11 @@ int main ()
 
 srand(time(NULL)); //grabs the computer time which is a "random" seed. 
 
-int num; 
+int num, counter; 
 int tortPos = 1; 
 int harePos = 1; 
 
+counter = 0; 
 while (tortPos < 70 && harePos < 70) 
 {
     moveTortoise(&tortPos); 
@@ -25,14 +26,19 @@ while (tortPos < 70 && harePos < 70)
         tortPos = 1; 
     if (harePos < 0)
         harePos = 1; 
+    
+    counter++;
 }
 
+const int size = 70;
+char progress [size] = '-'; //creates array with size 
 
-
+/*
 if (tortPos < harePos)
-    cout << "hare wins!" << harePos << "\t" << tortPos;
+    cout << " hare wins!" << harePos << "\t" << tortPos;
 else 
-    cout << "tort wins!" << tortPos << "\t" << harePos;
+    cout << " tort wins!" << tortPos << "\t" << harePos;
+*/
 
 return 0;
 
