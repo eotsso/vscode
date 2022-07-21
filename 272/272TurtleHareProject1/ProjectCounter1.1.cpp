@@ -9,27 +9,30 @@ void moveHare (int *);
 
 int main ()
 {
+
 srand(time(NULL)); //grabs the computer time which is a "random" seed. 
 
 int num; 
 int tortPos = 1; 
 int harePos = 1; 
 
-while (tortPos < 70 || harePos < 70) 
+while (tortPos < 70 && harePos < 70) 
 {
+    moveTortoise(&tortPos); 
+    moveHare(&harePos);
+
     if (tortPos < 0) 
         tortPos = 1; 
     if (harePos < 0)
         harePos = 1; 
-
-    moveTortoise(&tortPos); 
-    moveHare(&harePos);
 }
 
+
+
 if (tortPos < harePos)
-    cout << "hare wins!"
+    cout << "hare wins!" << harePos << "\t" << tortPos;
 else 
-    cout << "tort wins!"
+    cout << "tort wins!" << tortPos << "\t" << harePos;
 
 return 0;
 
@@ -38,7 +41,6 @@ return 0;
 void moveTortoise(int *tortPtr)
 {
     int num; 
-    srand(time(NULL));
     num = rand() % 10 + 1; 
 
     if (num > 0 && num < 6)         //1 - 5, 50%; Fast plod
@@ -46,14 +48,13 @@ void moveTortoise(int *tortPtr)
     else if (num < 8)               //6 - 7, 20%; Slip
         *tortPtr = *tortPtr - 6; 
     else
-        *tortPtr =  *tortPtr + 1;              //8 - 10, 30%; Slow plod
+        *tortPtr = *tortPtr + 1;              //8 - 10, 30%; Slow plod
 
 }
 
 void moveHare(int *harePtr)
 {
     int num; 
-    srand(time(NULL));
     num = rand() % 10 + 1; 
 
     if (num > 0 && num < 3)         //1-2, 20%, Sleep     

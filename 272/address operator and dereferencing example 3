@@ -1,0 +1,28 @@
+/*Example: address (&) v.s. dereferencing (*)
+*/
+
+#include <iostream>
+using namespace std;
+
+int main() 
+{
+    int a;
+    int * aPtr; 
+
+    a = 7; 
+    aPtr  = &a; 
+
+    cout << "The address of a is " << & a
+         << "\nThe value of aPtr is " << aPtr; 
+
+    cout << "\n\nThe value of a is" << a 
+         << "\nThe value of * aPtr is" << * aPtr; 
+
+    cout << endl;
+
+    cout << "&* aPtr: " << &* aPtr << "\t*& aPtr: " << *& aPtr << endl; 
+    //since & and * are inverses, they cancel each other out. But think about it logically as well for what's happening.
+    //priority for * and & is read from right to left, so for &*aPtr, *aPtr is evlauted first, and then & is evaluated. 
+
+    return 0;
+}

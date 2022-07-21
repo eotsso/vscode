@@ -1,0 +1,21 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    const int n = 6; //const value so can be used in an array
+    int a [ n ] = {2, 6, 10, -4, 1, -10};
+
+    cout << "The maximum is: " << max (a, 6) << endl;
+        /*Remember that an array is implemented as a CONSTANT POINTER to a NON-CONSTANT DATA, 
+        It is a constant pointer to the beginning of an array. Therefore, max(a, 6) arguements can be passed
+        into the max function because the array name 'a' itself is a pointer.*/
+
+    return 0;
+}
+
+int max (const int *aPtr, const int size) 
+/*the purpose for const int *aPtr is 
+{
+    int maximum = *aPtr; //recall how to find maximum. This is storing the first array value via dereferencing pointer
+}

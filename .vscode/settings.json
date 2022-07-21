@@ -19,6 +19,7 @@
         "iostream": "cpp",
         "ostream": "cpp",
         "project271": "cpp",
-        "reverse a string while loop": "cpp"
+        "reverse a string while loop": "cpp",
+        "addresses of variables": "cpp"
     }
 }

@@ -1,0 +1,34 @@
+/*
+CHALLENGE ACTIVITY
+8.12.2: Writing constructors.
+384664.2504448.qx3zqy7
+Use a member initialization list to make the TeamInfo constructor initialize the vector listOfPointsPerGame with a size of 7. Note: Including a vector in an initialization list causes that vector's constructor to be called with the value in the parens.
+*/
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+class TeamInfo {
+   public:
+      TeamInfo();
+      void PrintGamesInSeason() const;
+
+   private:
+      vector<int> listOfPointsPerGame;
+};
+
+TeamInfo::TeamInfo() : listOfPointsPerGame(7) {
+}
+
+void TeamInfo::PrintGamesInSeason() const {
+   cout << "There are " << listOfPointsPerGame.size() << " games in a season." << endl;
+}
+
+int main() {
+   TeamInfo myTeam;
+
+   myTeam.PrintGamesInSeason();
+
+   return 0;
+}

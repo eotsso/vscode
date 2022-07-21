@@ -1,0 +1,18 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int myAge;
+    int *myAgePtr = &myAge;
+
+    myAge = 5;
+    cout << "myAge:" << myAge << "\t";
+    cout << "myAgePtr:" << *myAgePtr << "\n";
+
+    *myAgePtr = 7; //assigns 7 to myAge variable, due to myAgePtr pointing to myAge address and dereferencing *
+    cout << "myAge:" << myAge << "\t";
+    cout << "myAgePtr:" << *myAgePtr << "\n";
+
+    return 0;
+}

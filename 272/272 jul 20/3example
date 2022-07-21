@@ -1,0 +1,48 @@
+#include <iostream>
+using namespace std;
+
+void square (int &);
+
+int main()
+{
+    int a = 2;
+
+    square (a);
+
+    cout << "a:" << a << endl;
+
+    return 0; 
+}
+
+void square(int & aRef) //argument 'a' is passed into this parameter
+                        //since this & is in a parameter, the compiler will read it was a 'reference operator'
+                        //this essentially creates an 'alias' aka another name that simply refers to the same 
+                        //memory location as 'a' via the compiler. therefore **no new memory location is allocated**
+{
+    aRef = aRef * aRef;
+}
+
+
+------**pass by reference via pointer**-------
+
+
+#include <iostream>
+using namespace std;
+
+void square (int *);
+
+int main()
+{
+    int a = 2; 
+
+    square (&a); //memory address of a is passed.
+
+    cout << "a: " << a << endl;
+
+    return 0;
+}
+
+void square (int * aPtr)
+{
+    *aPtr = *aPtr * *aPtr;
+}
